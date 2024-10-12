@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+body, input {
+  font-family: 'Lato', sans-serif;
+}
+
+input {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.header {
+  height: 100px;
+  background: #ffffff;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-style: italic;
+}
+
+.main {
+  background: #e0e0e0;
+  flex-grow: 1;
+}
+
+form {
+  background: #ffffff;
+  margin: 20px;
+  padding: 10px;
+  /* 20px margins + 10px padding x 2 */
+  height: calc(100% - 60px);
+}
