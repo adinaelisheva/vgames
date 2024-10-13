@@ -35,11 +35,14 @@ input {
   font-style: normal;
 }
 
-.main {
-  border: 20px solid #e0e0e0;
-  padding: 10px 20px;
-  background: #ffffff;
-  flex-grow: 1;
+@media (min-width: 525px) {
+
+  .main {
+    border: 20px solid #e0e0e0;
+    padding: 10px 20px;
+    background: #ffffff;
+    flex-grow: 1;
+  }
 }
 
 .main.withCols {
@@ -103,7 +106,12 @@ form {
   display: flex;
   background: #dddddd;
   padding: 10px;
-  width: 450px;
+}
+
+@media (min-width: 525px) {
+  .widget {
+    width: 450px;
+  }
 }
 
 .widget .sidebar {
@@ -151,6 +159,15 @@ form {
   background-color: #ffffff;
   margin-right: 5px;
   height: 25px;
+}
+
+@media (max-width: 525px) {
+  .widget .details .progressContainer {
+    flex-direction: column;
+  }
+  .widget .details .progressBar {
+    width: 100%;
+  }
 }
 
 .widget .details .progressBarInner {
