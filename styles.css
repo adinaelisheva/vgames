@@ -5,7 +5,6 @@
 html, body {
   margin: 0;
   height: 100%;
-  overflow: hidden;
 }
 
 body {
@@ -32,15 +31,129 @@ input {
   font-style: italic;
 }
 
+.header h2 {
+  font-style: normal;
+}
+
 .main {
-  background: #e0e0e0;
+  border: 20px solid #e0e0e0;
+  padding: 10px 20px;
+  background: #ffffff;
   flex-grow: 1;
 }
 
+.main.withCols {
+  display: flex;
+  flex-direction: row;
+}
+
 form {
-  background: #ffffff;
-  margin: 20px;
-  padding: 10px;
   /* 20px margins + 10px padding x 2 */
   height: calc(100% - 60px);
+}
+
+.widgetContainer {
+  margin: 20px 0;
+}
+
+.game {
+  margin: 30px 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  background-color: #eeeeee;
+  position: relative;
+}
+
+.game a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.game .info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  justify-content: space-between;
+}
+
+.game img {
+  height: 50px;
+  width: 70px;
+  object-fit: contain;
+}
+
+.game .name {
+  font-style: bold;
+  color: blue;
+}
+
+.game:hover .name {
+  color: red;
+}
+
+.container {
+  padding: 40px;
+}
+
+.widget {
+  display: flex;
+  background: #dddddd;
+  padding: 10px;
+  width: 450px;
+}
+
+.widget .sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 145px;
+  text-align: center;
+  font-family: "Comfortaa", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  background: #606086;
+  color: #e7f0ff;
+  padding: 15px;
+  margin-right: 15px;
+}
+
+.widget .sidebar .year {
+  font-size: 25px;
+}
+
+.widget .sidebar img {
+  width: 100px;
+  margin: 10px 0;
+  object-fit: contain;
+}
+
+.widget .details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.widget .details .progressContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.widget .details .progressBar {
+  flex-grow: 1;
+  border: 2px solid black;
+  background-color: #ffffff;
+  margin-right: 5px;
+  height: 25px;
+}
+
+.widget .details .progressBarInner {
+  background: #aec2e3;
+  height: 100%;
 }
