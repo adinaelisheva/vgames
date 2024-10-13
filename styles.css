@@ -87,12 +87,12 @@ form {
 }
 
 .game .name {
-  font-style: bold;
-  color: blue;
+  font-weight: 700;
+  color: #54647e;
 }
 
 .game:hover .name {
-  color: red;
+  color: #aec2e3;
 }
 
 .container {
