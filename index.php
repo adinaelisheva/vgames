@@ -31,14 +31,19 @@
           
           $i = 0;
           while ($entry = mysqli_fetch_assoc($entryresult)) {
-            $name = $entry["name"];
+            $name = trim($entry["name"]);
             $date = $entry["date"];
             $datestr = date('F j', strtotime($date));
-            $i = ($i + 1) % 5;
+
+            $imageFile = strtolower(str_replace(" ", "_", $name));
+            if (!file_exists("images/".$imageFile.".png")) {
+              $imageFile = "image".$i;
+              $i = ($i + 1) % 5;
+            }
         ?>
           <div class="game">
             <a href="https://radinagames2020.karantza.org/tagged/<?=$name?>"></a>
-            <img src="images/image<?=$i?>.png" />
+            <img src="images/<?=$imageFile?>.png" />
             <div class="info">
               <time datetime="<?=$date?>"><?=$datestr?></time>
               <div class="name"><?=$name?></div>
