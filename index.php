@@ -52,7 +52,46 @@
           </div>
         <?php } ?>
       </div>
-      <div class="col2"></div>
+      <div class="col2">
+        <?php 
+          // Upcoming games
+          $str = "SELECT * FROM `toplay` ORDER BY `status` DESC;";
+          $entryresult = mysqli_query($con, $str);
+          if(!$entryresult){
+            $err = mysqli_error($con);
+            echo $err;
+            exit();
+          }
+          $i = 0;
+          $lastStatus = -1;
+          while ($entry = mysqli_fetch_assoc($entryresult)) {
+            $name = trim($entry["name"]);
+            $status = $entry["status"];
+            if ($lastStatus != $status && $status == 1) {
+            ?>
+              <h3>Currently Playing</h3>
+            <?php
+            } elseif ($lastStatus != $status && $status == 0) {
+            ?>
+              <h3>To Play</h3>
+            <?php
+            }
+            $lastStatus = $status;
+            $imageFile = strtolower(str_replace(" ", "_", $name));
+            if (!file_exists("images/".$imageFile.".png")) {
+              $imageFile = "image".$i;
+              $i = ($i + 1) % 5;
+            }
+          ?>
+            <div class="game nolink">
+              <img src="images/<?=$imageFile?>.png" />
+              <div class="info">
+                <div class="name"><?=$name?></div>
+              </div>
+            </div>
+        <?php
+          } ?>
+      </div>
     </div>
   </body>
 </html>

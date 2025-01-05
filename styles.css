@@ -48,10 +48,30 @@ input {
 .main.withCols {
   display: flex;
   flex-direction: row;
+  min-width: 800px;
 }
 
-form {
+.col1 {
+  flex-grow: 1;
+}
+
+.col2 {
+  margin-left: 40px;
+}
+
+.col1 form {
   margin-bottom: 120px;
+}
+
+.col2 form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.col2 form input {
+  margin-left: 20px;
 }
 
 .widgetContainer {
@@ -93,8 +113,21 @@ form {
   color: #54647e;
 }
 
-.game:hover .name {
+.game:not(.nolink):hover .name {
   color: #aec2e3;
+}
+
+.game.nolink .info {
+  justify-content: center;
+}
+
+.game.nolink .name {
+  color: black;
+}
+
+.upnext {
+  font-weight: 700px;
+  display: flex;
 }
 
 .container {
