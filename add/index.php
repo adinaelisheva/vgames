@@ -12,6 +12,10 @@
     <div class="header">
       <?php 
         include("../setup.php");
+
+        // Logging games
+        $date = null;
+        $game = null;
         if(isset($_POST["game"])){
           $game = mysqli_real_escape_string($con,$_POST['game']);
         }
@@ -29,19 +33,63 @@
             echo "$game successfully logged";
           }
         }
+
+        // Uploading images
+        if(isset($_FILES["fileupload"])) {
+          $filename = basename($_FILES["fileupload"]["name"]);
+          $filepath = "../images/$filename"; 
+          $uploadOk = true;
+          // Check if image file is a actual image or fake image
+          if(getimagesize($_FILES["fileupload"]["tmp_name"]) === false) {
+            echo "Error uploading $filename - file is not an image.";
+            $uploadOk = false;
+          }
+          if ($uploadOk && file_exists($filepath)) {
+            echo "Error uploading $filename - file already exists.";
+            $uploadOk = false;
+          }
+          $size = $_FILES["fileupload"]["size"];
+          if ($uploadOk && $size > 500000) {
+            echo "Error uploading $filename - $size bytes is too large.";
+            $uploadOk = false;
+          }
+          $imageFileType = strtolower(pathinfo($filepath ,PATHINFO_EXTENSION));
+          if($uploadOk && $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+              && $imageFileType != "gif" ) {
+            echo "Error uploading $filename - $imageFileType not allowed. Must be PNG, JPG, or GIF.";
+            $uploadOk = false;
+          }
+          if ($uploadOk) {
+            if (move_uploaded_file($_FILES["fileupload"]["tmp_name"], $filepath)) {
+              echo "The file $filename has been uploaded.";
+            } else {
+              echo "Error uploading $filename - file could not be moved.";
+            }
+          }
+        }
       ?>
     </div>
     <div class="main">
       <form action="" method="post">
         <p>
-          <input type="date" name="date" value="<?=date('Y-m-d')?>">
+          <input type="date" name="date" value="<?=date('Y-m-d')?>" />
         </p><p>
           Played:
         </p><p>
-          <input type="text" name="game">
+          <input type="text" name="game" />
         </p><p>
           <input type="submit" />
         </p>
+      </form>
+
+      <form action="" method="post" enctype="multipart/form-data">
+        <p>
+          Add an image:
+        </p><p>
+          <input type="file" name="fileupload" accept=".png,.jpg,.jpeg,.gif" />
+        </p><p>
+          <input type="submit" value="Upload Image" name="image" />
+        </p><p>
       </form>
     </div>
   </body>

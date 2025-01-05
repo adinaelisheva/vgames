@@ -51,8 +51,7 @@ input {
 }
 
 form {
-  /* 20px margins + 10px padding x 2 */
-  height: calc(100% - 60px);
+  margin-bottom: 120px;
 }
 
 .widgetContainer {
