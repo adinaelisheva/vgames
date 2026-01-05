@@ -45,7 +45,7 @@ input {
   }
 }
 
-.main.withCols {
+.withCols {
   display: flex;
   flex-direction: row;
   min-width: 800px;
@@ -156,8 +156,8 @@ input {
   font-family: "Comfortaa", sans-serif;
   font-size: 18px;
   font-weight: 700;
-  background: #606086;
-  color: #e7f0ff;
+  background: #7aa33f;
+  color: #f9ffe7;
   padding: 15px;
   margin-right: 15px;
 }
