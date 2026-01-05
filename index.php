@@ -43,7 +43,7 @@
             }
         ?>
           <div class="game">
-            <a href="https://radinagames2020.karantza.org/tagged/<?=$name?>"></a>
+            <a href="https://radinagames2020.tumblr.com/tagged/<?=$name?>"></a>
             <img src="images/<?=$imageFile?>.png" />
             <div class="info">
               <time datetime="<?=$date?>"><?=$datestr?></time>

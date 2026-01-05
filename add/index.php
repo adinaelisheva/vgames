@@ -33,11 +33,17 @@
             $newstatus = "played";
           }
           $sql = "UPDATE `toplay` SET `status`='$status' WHERE `name`='$game';";
+          $successmsg = "set to '$newstatus'";
+          if ($status > 1) {
+            // remove from `toplay` instead
+            $sql = "DELETE FROM `toplay` WHERE `name`='$game';";
+            $successmsg = "removed from to-play list";
+          }
           if(!mysqli_query($con, $sql)){
             $err = mysqli_error($con);
             echo $err;
           } else {
-            echo "$game successfully set to '$newstatus'";
+            echo "$game successfully $successmsg";
           }
           if ($status == 2) {
             // Need to also log the play
